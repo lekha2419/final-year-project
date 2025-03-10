@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/contact.css')}}">
+</head>
+<body>
+    <section class="contact">
+        <form class="contact-container">
+          <h1>Contact Us</h1>
+          <div class="input-name">
+            <input type="text" class="first-name" name="fname" placeholder="First-Name" required>
+            <input type="text" class="last-name" name="lname" placeholder="Last-Name" required>
+          </div>
+  
+          <div class="input-email">
+            <input type="text" class="email" name="email" placeholder="Email" required>
+          </div>
+  
+          <div class="input-subject">
+            <input type="text" class="subject" name="subject" placeholder="Subject" required>
+          </div>
+  
+          <div class="input-message">
+            <input type="text" class="message" name="message" placeholder="Message" required>
+          </div>
+  
+          <div class="action-btn">
+            <button class="btn">Submit</button>
+          </div>
+  
+          <div class="or-text">Or contact us on social media</div>
+          <div class="social-contact">
+            <div class="social">
+              <span>Instagram</span>
+            </div>
+            <div class="social">
+              <span>Twitter</span>
+            </div>
+          </div>
+        </form>
+      </section>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCB Fault Detection</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/pcb.css')}}">
+  </head>
+  <body>
+    <div class="main-section">
+      <nav class="nav-bar">
+        <h1 class="logo">PCB Fault Detection</h1>
+        <a href="#sec">Benefits</a>
+        <a href="#first">Faults Detection</a>
+        <div class="right-corner">
+          <a href="{{ url_for('logout') }}">
+            <button>logout</button>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Main Container -->
+      <div class="container">
+        <!-- Input Image Section -->
+        <div class="image-box">
+          <div class="box" id="input-box">
+            <!-- Image Preview -->
+            <img id="uploadedImage" style="display:none;" />
+          </div>
+          <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" name="fileInput" id="fileInput" accept="image/*">
+            <button type="button" id="input-file">Predict</button>
+        </form>
+       
+        </div>
+ 
+        <!-- Output Image Section -->
+        <div class="image-box">
+          <div class="box" id="outputbox">
+              <img id="outputImage" src="" alt="Predicted Image" style="display:none;" width="300">
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <section id="first" class="s1">
+      <div class="title">
+        <h1>Faults Detection</h1>
+        <hr class="line">
+      </div>
+      <div class="container1">
+        <div class="text-section">
+          <h1>PCB Board</h1>
+          <p>
+            "Our PCB Fault Detection application leverages AI and ML to accurately 
+            identify defects in printed circuit boards, such as missing holes and 
+            mouse bites. Users can upload an image, and our trained models analyze 
+            it to detect and classify faults, ensuring high precision and efficiency. 
+            This solution enhances quality control, reduces manual inspection time, 
+            and improves manufacturing reliability."
+          </p>
+        </div>
+        <div class="image-container" onmousemove="moveImage(event)">
+          <div class="image"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec" class="benefits">
+      <div class="title">
+        <h2>Benefits</h2>
+      </div>
+      <div class="benefit-container">
+        <div class="benefit-text">
+          <div class="text">
+            <h1>Accurate Defect Detection</h1>
+            <p>Identifies PCB defects like short circuits, open circuits, missing holes, mouse bites, and spurious copper with high precision.
+               Reduces manual inspection errors using AI and ML-based analysis.
+            </p>
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+
+          <div class="text">
+            <h1>Time & Cost Efficiency</h1>
+            <p> Automates fault detection, reducing the need for manual inspection.
+                Saves manufacturing costs by preventing faulty PCBs from entering production.
+            </p>
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+
+          <div class="text">
+            <h1>Enhanced Quality Control</h1>
+            <p> Ensures high reliability by detecting even minor defects.
+                Reduces defective PCB production, improving overall product quality.
+            </p>
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+
+          <div class="text">
+            <h1>User-Friendly & Fast</h1>
+            <p> Simple image upload feature for quick defect detection.
+                Provides real-time defect analysis with detailed insights.
+            </p>
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script> 
+      // JavaScript to handle image preview
+      const fileInput = document.getElementById('fileInput');
+      const uploadedImage = document.getElementById('uploadedImage');
+      
+      fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        console.log('File selected:', file);  // Check if the file is detected
+      
+        if (file) {
+          const reader = new FileReader();
+      
+          // Once the file is read, update the image preview
+          reader.onload = function(e) {
+            uploadedImage.src = e.target.result;  // Set the image source to the result
+            uploadedImage.style.display = 'block';  // Make the image visible
+          }
+      
+          // Read the image file as a data URL
+          reader.readAsDataURL(file);
+        }
+      });
+      document.getElementById("input-file").addEventListener("click", function () {
+      let fileInput = document.getElementById("fileInput");
+      let file = fileInput.files[0];
+      
+      if (!file) {
+          alert("Please select an image!");
+          return;
+      }
+      
+      let formData = new FormData();
+      formData.append("image", file);
+      
+      fetch("/upload", {
+          method: "POST",
+          body: formData
+      })
+      .then(response => response.blob())  // Expect JSON response from Flask
+      .then(blob => {
+        if (blob) {
+            let outputImage = document.getElementById("outputImage");
+            outputImage.src = URL.createObjectURL(blob)
+            outputImage.style.display = "block";  // Show output image
+        } else {
+            alert("Error processing image!");
+        }
+      })
+      .catch(error => console.error("Error:", error));
+      });
+      document.getElementById("predictButton").addEventListener("click", function () {
+          let fileInput = document.getElementById("fileInput");
+          let file = fileInput.files[0];
+      
+          if (!file) {
+              alert("Please select an image!");
+              return;
+          }
+      
+          let formData = new FormData();
+          formData.append("file", file);
+      
+          fetch("/upload", {
+              method: "POST",
+              body: formData
+          })
+          .then(response => response.json())  // Expect JSON response from Flask
+          .then(data => {
+              console.log("Server Response:", data);  // Debugging response
+            
+              if (data.image_url) {
+                  let outputImage = document.getElementById("outputImage");
+                  outputImage.src = data.image_url;
+                  outputImage.style.display = "block";  // Show the output image
+              } else {
+                  alert("Error processing image!");
+              }
+          })
+          .catch(error => console.error("Error:", error));
+      });
+    </script>
+ 
+
+  </body>
+</html>

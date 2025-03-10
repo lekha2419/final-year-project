@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <title>login</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+</head>
+<body >
+    
+      <video autoplay loop muted plays-inline id="back-video">
+        <source src="{{url_for('static',filename='video/vecteezy_debugging-electronics-device-pcb-witch-microcontroller-in_28258533.mp4') }}" type="video/mp4">
+      </video>
+      <div id="front">
+      <form class="content" method="POST" action="/">
+      <label id="first">Login</label>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="password" required>
+      <a href="#">Forgot Password ?</a>
+      <input type="submit" value="Login" id="Button">
+      <label id="Last">Don't have an Account? 
+        <a href="{{ url_for('register') }}">Register</a>
+    </label>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-messages">
+            {% for category, message in messages %}
+              <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+ 
+    </form>
+    </div>
+  </body>
+</html>

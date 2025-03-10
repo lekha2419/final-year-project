@@ -1,0 +1,355 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.main-section {
+    background-image: url("../images/mb.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+}
+
+.nav-bar {
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: whitesmoke;
+    transition: all .50s ease;
+    background-color: black;
+    padding-bottom: 5px;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+}
+
+.nav-bar {
+    display: flex;
+    gap: 25px;
+    justify-content: space-around;
+    color: whitesmoke;
+}
+
+.nav-bar a {
+    display: inline-block;
+    transition: all 0.6s ease;
+}
+
+.nav-bar  a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.nav-bar  a:hover {
+    transform: scale(1.1);
+}
+
+.right-content {
+    display: flex;
+    align-items: center;
+}
+
+.nav-btn {
+    display: inline-block;
+    background: blue;
+    border: 2px solid white;
+    border-radius: 4px;
+    color: whitesmoke;
+    transition: all .6s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-5px);
+    border: 2px solid coral;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    min-height: 70vh;
+    justify-content: space-between;
+    margin-top: 100px;
+    position: relative;
+    left: 140px;
+    top: 40px;
+}
+
+.p1 {
+    position: relative;
+    margin-top: 150px;
+    text-align: center;
+}
+
+.image-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #13291d;
+    box-shadow: 2px 2px 2px 0px white;
+    width: 45%;
+    border-radius: 10px;
+    height: 400px;
+}
+
+.image-box:hover {
+    transform: scale(1.05);
+}
+
+#inputimage {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.box {
+    width: 46%;
+    height: 63%;
+    background-color: white;
+    border: solid;
+    border-radius: 10px;
+    box-shadow: 4px 4px 20px black;
+    transition: transform 0.3s ease ease-in-out;
+}
+
+#outputbox {
+    margin-top: -42px;
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.box:hover {
+    transform: scale(1.1);
+    border-color: rgb(106, 106, 124);
+}
+
+.box:hover .predict {
+    display: block;
+}
+
+button {
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    width: 150px;
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+#file-upload-button {
+    align-content: center;
+}
+
+.image-section img {
+    height: 100px;
+}
+
+.s1 {
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: auto ;
+    margin-right: auto;
+    padding: 10px;
+    height: 650px;
+}
+
+.title {
+    text-align: center;
+    font-size: 4vmin;
+    color: white;
+    position: relative;
+    top: 80px;
+}
+
+.s1 .line {
+    width: 300px;
+    border-color: green;
+    border-radius: 80px;
+    border-right: 50px;
+    display: flex;
+    position: relative;
+    left: 410px;
+}
+
+.container1 {
+    display: flex;
+    justify-content: space-between;
+    background-color: #14261c;
+    height: 550px;
+}
+
+.text-section {
+    width: 50%;
+    position: relative;
+    top: 160px;
+    left: 120px;
+    padding: 5px;
+}
+
+.text-section p {
+    font-style: italic;
+    margin-top: 30px;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.image-container {
+    width: 250px;
+    height: 380px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+    top: 110px;
+    right: 50px;
+}
+
+.image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    transform-style: preserve-3d;
+    box-shadow: 0px 10px 20px green;
+    transition: all 0.2s;
+}
+
+.image::before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: rotateY(90deg);
+    transform-origin: 0 50%;
+    filter: brightness(70%);
+}
+
+.image {
+    background-image: url("../images/pcb1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.image:hover {
+    transform: rotateY(36deg) scale(1.1);
+}
+
+.image:hover::before {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.benefits {
+    width: 100%;
+    height: 95vh;
+    background-color: #14261c;
+    overflow: hidden;
+}
+
+.benefit-container {
+    display: flex;
+    justify-content: center;
+    height: 85%;
+    background-color: whitesmoke;
+}
+
+.benefit-text {
+    width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    height: 50vh;
+}
+
+.text p {
+    width: 30vh;
+    position: relative;
+    top: 80px;
+}
+
+.text h1 {
+    position: relative;
+    top: 50px;
+
+}
+
+.benefits .title {
+    position: relative;
+    top: 80px;
+    cursor: pointer;
+    color: #14261c;
+}
+
+.benefits .title:hover {
+    transform: scale(1.1);
+}
+
+.text {
+    height: 300px;
+    position: relative;
+    top: 80px;
+    padding: 5px;
+}
+
+.text:nth-child(1):hover {
+    background-color: rgba(13, 31, 37, 0.5);
+}
+
+.text:nth-child(2):hover {
+    background-color: rgba(13, 31, 37, 0.5);
+}
+
+.text:nth-child(3):hover {
+    background-color: rgba(13, 31, 37, 0.5);
+}
+
+.text:nth-child(4):hover {
+    background-color: rgba(13, 31, 37, 0.5);
+}
+
+
+.scroll {
+    background-color: #031623;
+    height: 50px;
+    z-index: 1;
+    margin: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+}
+#uploadedImage {
+    max-width: 100%;
+    max-height: 250px;
+    border-radius: 5px;
+    display: block;
+    object-fit: contain;
+}
+.text-section h1
+{
+    color: white;
+}
